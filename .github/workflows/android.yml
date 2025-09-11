@@ -7,32 +7,31 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   lint:
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout the code
-      uses: actions/checkout@v2
-
-    - name: Run Lint
-      run: /gradlew lintDebug
-    - name: Upload html test report
-      uses: actions/upload-artifact@v2
-      with:
-        name: index.html
-        path: app/build/reports/lint-results-debug.html
-
-
-  build:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-      - name: print hello world
-        run: echo Hello world !
+      - name: Checkout the code
+        uses: actions/checkout@v2
 
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
+
+      - name: Run Lint
+        run: ./gradlew lintDebug
+
+      - name: Upload html lint report
+        uses: actions/upload-artifact@v2
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results-debug.html
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
       - name: Build with Gradle
         run: ./gradlew build
