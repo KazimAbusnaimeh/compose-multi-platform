@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "181879256645",
+    "project_id": "composemp-7f14d",
+    "storage_bucket": "composemp-7f14d.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181879256645:android:9fe9a536eb83e8d13f152c",
+        "android_client_info": {
+          "package_name": "org.example.composemp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHECc9jz4iVou0m2wtlUq9wr2bzMcywLs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

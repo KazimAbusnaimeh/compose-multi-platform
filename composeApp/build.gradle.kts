@@ -1,3 +1,4 @@
+import org.gradle.kotlin.dsl.implementation
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -8,6 +9,7 @@ plugins {
     alias(libs.plugins.composeCompiler)
     alias(libs.plugins.composeHotReload)
     alias(libs.plugins.kotlin.serialization)
+    id("com.google.gms.google-services")
 }
 
 kotlin {
@@ -38,6 +40,8 @@ kotlin {
             implementation(libs.koin.androidx.compose)
 
             implementation(libs.ktor.client.okhttp)
+            implementation(project.dependencies.platform("com.google.firebase:firebase-bom:34.2.0"))
+            implementation("com.google.firebase:firebase-analytics")
         }
         commonMain.dependencies {
             implementation(compose.runtime)

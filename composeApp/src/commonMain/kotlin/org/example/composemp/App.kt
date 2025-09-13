@@ -1,5 +1,6 @@
 package org.example.composemp
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -17,14 +18,16 @@ import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 @Preview
-fun App() {
+fun App(onBockClicked: () -> Unit = {}) {
     MaterialTheme {
         val nav = rememberNavController()
         KoinContext {
             NavHost(navController = nav, startDestination = "home") {
                 composable("home") {
                     val viewModel = koinViewModel<MyViewModel>()
-                    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                    Box(Modifier.fillMaxSize().clickable {
+                        onBockClicked()
+                    }, contentAlignment = Alignment.Center) {
                         Text(viewModel.getHelloWorldString())
                     }
                 }
